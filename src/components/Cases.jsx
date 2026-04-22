@@ -3,17 +3,17 @@ import './Cases.css'
 
 const heroCase = {
   category: 'Technology Strategy & Consulting',
-  title: 'Transforming Software Delivery & Testing for a Global Automotive Leader',
-  cardBody: 'Unified software delivery platform across global teams.',
-  summary: 'Unified fragmented tools into a centralized, scalable delivery ecosystem.',
-  challenge: 'Fragmented tools, lack of visibility, and inconsistent processes across distributed teams led to inefficiencies and high operational complexity.',
-  solution: 'We defined and executed a transformation strategy to unify software delivery and testing, implementing a centralized platform based on OpenText ALM & UFT and consolidating legacy systems.',
-  body: 'A leading automotive manufacturer struggled with fragmented tools, lack of visibility, and inconsistent processes across global teams. We defined and executed a transformation strategy to unify software delivery and testing, designing a centralized platform based on OpenText ALM & UFT and migrating legacy systems into a single ecosystem.',
-  outcome: '1,000+ users on a unified global platform <br /> 100% tool consolidation into a single system <br /> End-to-end visibility across the full lifecycle',
+  title: 'End-to-End Software Delivery Transformation for a Global Automotive Leader',
+  cardBody: 'A leading automotive manufacturer needed a trusted partner to transform, unify, and then operate their global software delivery and testing ecosystem — long term.',
+  summary: 'From fragmented tools to a unified, fully managed global platform — built and operated by VOTUM.',
+  challenge: 'A leading global automotive manufacturer was struggling with fragmented tools, siloed teams, and no visibility across their software delivery and testing lifecycle. Inconsistent processes across regions made governance nearly impossible — and once the platform was built, they needed a partner they could trust to run it.',
+  solution: 'We defined and executed a full transformation strategy — designing a centralized platform built on OpenText ALM & UFT and migrating all legacy systems into a single unified ecosystem. Following a successful rollout, we transitioned into a long-term managed services partnership: providing end-to-end operations, L1–L2 support, incident management, and continuous platform improvements under defined SLAs.',
+  outcome: 'A standardized, scalable platform with full lifecycle visibility — now reliably serving over 1,000 users worldwide with 98%+ availability. The client freed up internal resources, eliminated tool fragmentation, and gained a long-term partner for continuous improvement.',
+  tags: ['OpenText ALM', 'UFT', 'Enterprise Architecture', 'Managed Services', 'SLA Management', 'L1–L2 Support'],
   stats: [
-    { value: 'Global', label: 'rollout' },
-    { value: 'Unified', label: 'platform' },
-    { value: 'End-to-End', label: 'visibility' },
+    { value: '1,000+', label: 'users worldwide' },
+    { value: '98%+', label: 'availability' },
+    { value: '100%', label: 'tool consolidation' },
   ],
   visual: 'transformation',
 }
@@ -21,12 +21,13 @@ const heroCase = {
 const supportingCases = [
   {
     category: 'Asset Management Platform',
-    title: 'Digital Advisory Platform for Asset Management',
-    cardBody: 'Modern platform for investment consultants with real-time collaboration.',
+    title: 'Modern Digital Advisory Platform for a Leading Asset Manager',
+    cardBody: 'A leading asset management firm faced limitations with a legacy system — poor usability, limited scalability, and workflows that slowed down their consultants.',
     summary: 'Modernized manual workflows into an integrated digital platform.',
-    challenge: 'Investment consultants relied on disconnected spreadsheets and manual processes for planning, service mediation, activity tracking, and invoicing, creating inefficiencies and collaboration gaps.',
-    solution: 'Built a modern React and Java microservices platform enabling real-time collaboration across planning, service mediation, activity tracking, and invoicing with Kubernetes deployment.',
-    outcome: 'Replaced manual workflows with scalable, automated processes and improved collaboration across the organization.',
+    challenge: 'A leading asset management firm was held back by a legacy platform that couldn\'t scale. Outdated workflows, poor UX, and siloed collaboration were slowing down their specialist investment consultants and limiting operational efficiency.',
+    solution: 'We designed and built a modern, enterprise-grade web platform from scratch — covering planning, design, development, testing, and full rollout. The solution features a scalable microservices backend, a React frontend, secure authentication, and containerized deployment.',
+    outcome: 'End-to-end processes fully digitized — including planning, service mediation, activity tracking, and automated invoicing. Manual workflows replaced entirely, enabling efficient and scalable collaboration across the organization.',
+    tags: ['React', 'Java / Spring Boot', 'Keycloak', 'Docker', 'Kubernetes'],
     stats: [
       { value: 'React', label: 'frontend' },
       { value: 'Java', label: 'microservices' },
@@ -36,12 +37,13 @@ const supportingCases = [
   },
   {
     category: 'DevOps Platform',
-    title: 'Production-Ready Kubernetes Platform',
-    cardBody: 'On-premise Kubernetes environment with integrated CI/CD.',
+    title: 'Production-Ready Kubernetes Platform for Scalable Application Delivery',
+    cardBody: 'To support modern delivery demands, a client needed a robust on-premise DevOps platform built to enterprise security and infrastructure standards.',
     summary: 'Enabled secure, controlled application delivery with on-premise infrastructure.',
-    challenge: 'The organization needed production infrastructure within their data center with integrated CI/CD, automated backups, security scanning, and comprehensive monitoring while maintaining full control.',
-    solution: 'Designed and deployed a complete on-premise DevOps platform with dedicated Kubernetes environments, integrated CI/CD pipelines, automated backups, security scanning, and monitoring dashboards.',
-    outcome: 'Enabled secure, consistent application delivery with full infrastructure control.',
+    challenge: 'To meet growing application delivery demands, a client needed a robust, fully on-premise DevOps platform — one that could support modern deployment practices while meeting strict enterprise security and infrastructure requirements.',
+    solution: 'We designed and implemented a complete on-premise Kubernetes platform from scratch — with dedicated clusters for development and production, integrated core services (ingress, storage, backups, monitoring), and CI/CD pipelines via Jenkins with built-in security scanning.',
+    outcome: 'A production-ready infrastructure enabling secure, scalable, and consistent application delivery — with full control over deployment processes and a measurable improvement in release reliability.',
+    tags: ['Kubernetes', 'Jenkins', 'CI/CD', 'On-Premise Infrastructure', 'DevSecOps'],
     stats: [
       { value: 'On-prem', label: 'platform' },
       { value: 'CI/CD', label: 'pipelines' },
@@ -53,12 +55,13 @@ const supportingCases = [
 
 const featureCase = {
   category: 'Managed Services',
-  title: 'Managed Delivery Platform for Automotive Enterprise',
-  cardBody: '24/7 managed platform serving 1,000+ users worldwide.',
+  title: 'Managed Software Delivery & Test Operations for a Global Automotive Leader',
+  cardBody: 'After a major transformation, a global automotive manufacturer needed a trusted partner to operate and continuously improve their platform at scale.',
   summary: 'Ensuring reliable operations and continuous improvement under defined SLAs.',
-  challenge: 'The organization needed to operate a complex delivery platform used by over 1,000 users globally while continuously improving it—requiring 24/7 availability, proactive monitoring, and regular updates.',
-  solution: 'Established a managed services operation with dedicated teams providing 24/7 monitoring, incident response, automated backups, security patches, and continuous platform improvements aligned to SLAs.',
-  outcome: 'Reliable operations, reduced internal workload, and continuous platform improvement under defined SLAs.',
+  challenge: 'After completing a large-scale transformation, a global automotive manufacturer needed a trusted long-term partner to operate, maintain, and continuously improve their centralized software delivery and testing platform — at enterprise scale.',
+  solution: 'We provide end-to-end managed services for a platform supporting over 1,000 users worldwide. Our scope covers system maintenance, L1–L2 user support, incident management, and ongoing platform enhancements — all under clearly defined SLAs.',
+  outcome: 'Greater than 98% platform availability, significantly reduced internal workload, and continuous improvement — delivering stable, reliable operations and long-term scalability for the client\'s global teams.',
+  tags: ['OpenText ALM/UFT', 'Managed Services', 'SLA Management', 'L1–L2 Support'],
   stats: [
     { value: '1,000+', label: 'users' },
     { value: '98%+', label: 'availability' },
@@ -70,12 +73,13 @@ const featureCase = {
 
 const finalCase = {
   category: 'Test Automation',
-  title: 'Scalable Test Automation Framework',
-  cardBody: 'Standardized automation framework reducing manual testing effort.',
+  title: 'Scalable Test Automation Framework for an Automotive Enterprise',
+  cardBody: 'A leading automotive manufacturer relied heavily on manual testing — resulting in slow releases, limited scalability, and growing delivery risk.',
   summary: 'Integrated testing directly into the release lifecycle with automation.',
-  challenge: 'Teams spent substantial time on manual testing, creating bottlenecks in the release cycle and limiting coverage. Test execution was inconsistent across environments and teams.',
-  solution: 'Built a standardized, scalable test automation framework integrated into the CI/CD pipeline, enabling consistent, repeatable testing across all environments and supporting higher test coverage.',
-  outcome: 'Faster, more reliable releases with higher test coverage across teams.',
+  challenge: 'A leading automotive manufacturer was over-reliant on manual UI and functional testing. Slow release cycles, limited scalability, and growing system complexity were creating real risk — and the testing function couldn\'t keep pace with delivery demands.',
+  solution: 'We designed and implemented a comprehensive test automation framework from scratch using UFT, defined standardized testing processes, and integrated automated testing directly into the development and release lifecycle.',
+  outcome: 'Significantly reduced manual testing effort, faster and more reliable release cycles, and improved test coverage across teams — enabling scalable, high-quality software delivery at enterprise pace.',
+  tags: ['Test Automation', 'QA Strategy', 'Release Management', 'Process Standardization'],
   stats: [
     { value: 'Less', label: 'manual effort' },
     { value: 'Higher', label: 'coverage' },
@@ -226,19 +230,27 @@ function CaseModal({ item, onClose }) {
 
         <div className="case-modal__content">
           <section className="case-modal__section case-modal__section--challenge">
-            <h3>Challenge</h3>
+            <h3>The Challenge</h3>
             <p>{item.challenge}</p>
           </section>
 
           <section className="case-modal__section case-modal__section--solution">
-            <h3>Solution</h3>
+            <h3>What We Did</h3>
             <p>{item.solution}</p>
           </section>
 
           <section className="case-modal__section case-modal__section--outcome">
-            <h3>Outcome</h3>
+            <h3>The Result</h3>
             <p>{item.outcome}</p>
           </section>
+
+          {item.tags && (
+            <div className="case-modal__tags">
+              {item.tags.map((tag) => (
+                <span className="tag" key={tag}>{tag}</span>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>
