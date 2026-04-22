@@ -1,0 +1,606 @@
+/* ── Shared phase visuals ───────────────────────────────── */
+
+.phase-visual {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0)),
+    var(--navy-900);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  display: flex;
+}
+
+.phase-visual__inner {
+  position: relative;
+  z-index: 1;
+  padding: clamp(22px, 3vw, 34px);
+  width: 100%;
+  height: 100%;
+}
+.phase-visual {
+  --pv-bg: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0));
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+  background:
+    var(--pv-bg),
+    var(--navy-900);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.phase-visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 39px,
+      rgba(255,255,255,0.025) 39px,
+      rgba(255,255,255,0.025) 40px
+    );
+  pointer-events: none;
+}
+
+.phase-visual__inner {
+  position: relative;
+  z-index: 1;
+  padding: clamp(22px, 3vw, 34px);
+}
+
+.phase-visual__eyebrow {
+  display: block;
+  margin-bottom: 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--teal-400);
+}
+
+.phase-visual__title {
+  margin-bottom: 28px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--navy-200);
+  opacity: 0.78;
+}
+
+/* ── Phase 01: Map ─────────────────────────────────────── */
+
+.phase-map__canvas {
+  position: relative;
+  height: 250px;
+  width: 100%;
+}
+
+.phase-map__svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.phase-map__node {
+  position: absolute;
+  border-radius: var(--radius-md);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.phase-map__node--input,
+.phase-map__node--output {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--navy-200);
+  padding: 11px 14px;
+  backdrop-filter: blur(4px);
+}
+
+.phase-map__node--center {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 14px 20px;
+  background: rgba(120,214,75,0.09);
+  border: 1.5px solid rgba(120,214,75,0.7);
+  color: var(--green-400);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  box-shadow:
+    0 0 0 1px rgba(120,214,75,0.08) inset,
+    0 0 28px rgba(120,214,75,0.12);
+  animation: phase-map-pulse 3s ease-in-out infinite;
+}
+
+.phase-map__node--goals { left: 0; top: 16px; }
+.phase-map__node--constraints { left: 0; top: 94px; }
+.phase-map__node--risks { left: 0; top: 172px; }
+
+.phase-map__node--arch { right: 0; top: 36px; }
+.phase-map__node--proj { right: 0; top: 146px; }
+
+.phase-map__footer {
+  margin-top: 22px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--navy-400);
+}
+
+.phase-map__footer::before,
+.phase-map__footer::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(255,255,255,0.08);
+}
+
+@keyframes phase-map-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 0 1px rgba(120,214,75,0.08) inset,
+      0 0 24px rgba(120,214,75,0.08);
+    border-color: rgba(120,214,75,0.65);
+  }
+  50% {
+    box-shadow:
+      0 0 0 1px rgba(120,214,75,0.12) inset,
+      0 0 34px rgba(120,214,75,0.18);
+    border-color: rgba(120,214,75,1);
+  }
+}
+
+/* ── Phase 02: Pipeline ────────────────────────────────── */
+
+.phase-pipeline__flow {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  padding: 16px 0 8px;
+}
+
+.phase-pipeline__stage {
+  flex: 1;
+  position: relative;
+  text-align: center;
+}
+
+.phase-pipeline__box {
+  position: relative;
+  width: 100%;
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 10px;
+  border-radius: var(--radius-md);
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--navy-200);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  transition:
+    border-color var(--transition-mid),
+    background var(--transition-mid),
+    transform var(--transition-fast);
+}
+
+.phase-pipeline__box--active {
+  background: rgba(120,214,75,0.09);
+  border-color: rgba(120,214,75,0.75);
+  color: var(--green-400);
+  box-shadow: 0 0 24px rgba(120,214,75,0.08);
+}
+
+.phase-pipeline__box--muted {
+  border-color: rgba(106,214,161,0.18);
+  color: rgba(172,172,209,0.72);
+}
+
+.phase-pipeline__sub {
+  margin-top: 4px;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  color: var(--teal-400);
+  opacity: 0.85;
+}
+
+.phase-pipeline__badge {
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  background: rgba(120,214,75,0.12);
+  border: 1px solid rgba(120,214,75,0.22);
+  color: var(--green-400);
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  animation: phase-pipeline-badge-in 0.5s ease 0.8s both;
+}
+
+.phase-pipeline__coverage {
+  width: 82%;
+  height: 4px;
+  margin: 10px auto 0;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(120,214,75,0.12);
+}
+
+.phase-pipeline__coverage-fill {
+  width: 0;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--green-400), var(--teal-400));
+  animation: phase-pipeline-fill 1.2s cubic-bezier(0.25, 1, 0.5, 1) 0.35s forwards;
+}
+
+.phase-pipeline__arrow {
+  flex-shrink: 0;
+  width: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.phase-pipeline__arrow svg {
+  opacity: 0.3;
+}
+
+.phase-pipeline__arrow--active svg {
+  opacity: 1;
+}
+
+.phase-pipeline__footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(16px, 3vw, 32px);
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.phase-pipeline__stat {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--navy-400);
+}
+
+.phase-pipeline__stat span {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 16px;
+  letter-spacing: 0;
+  color: var(--green-400);
+  font-weight: 700;
+}
+
+@keyframes phase-pipeline-badge-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes phase-pipeline-fill {
+  to {
+    width: 95%;
+  }
+}
+
+/* ── Phase 03: Heartbeat ───────────────────────────────── */
+
+.phase-heartbeat__wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.phase-heartbeat__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--navy-400);
+}
+
+.phase-heartbeat__live {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--green-400);
+}
+
+.phase-heartbeat__live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green-400);
+  box-shadow: 0 0 10px rgba(120,214,75,0.4);
+  animation: phase-heartbeat-live 1.5s ease-in-out infinite;
+}
+
+.phase-heartbeat__chart {
+  position: relative;
+  padding: 22px 22px 14px;
+  border-radius: var(--radius-lg);
+  background: rgba(0,0,0,0.16);
+  border: 1px solid rgba(255,255,255,0.08);
+  overflow: hidden;
+}
+
+.phase-heartbeat__label {
+  position: absolute;
+  top: 10px;
+  transform: translateX(-50%);
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  background: rgba(120,214,75,0.12);
+  border: 1px solid rgba(120,214,75,0.22);
+  color: var(--green-400);
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  animation: phase-heartbeat-label 0.6s ease 0.9s both;
+}
+
+.phase-heartbeat__svg {
+  width: 100%;
+  height: 108px;
+  display: block;
+}
+
+.phase-heartbeat__line {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: phase-heartbeat-draw 2s cubic-bezier(0.25, 1, 0.5, 1) 0.2s forwards;
+}
+
+.phase-heartbeat__status {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  width: 100%;
+}
+
+.phase-heartbeat__item {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  animation: phase-heartbeat-item-in 0.45s ease both;
+  min-width: 0;
+}
+
+.phase-heartbeat__status-text {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  line-height: 1.4;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--navy-200);
+  white-space: pre-line;
+  min-width: 0;
+}
+
+.phase-heartbeat__status-value {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: var(--green-400);
+  justify-self: end;
+  min-width: 0;
+}
+
+.phase-heartbeat__status-text,
+.phase-heartbeat__status-value {
+  min-width: 0;
+}
+
+.phase-heartbeat__item:nth-child(1) { animation-delay: 0.8s; }
+.phase-heartbeat__item:nth-child(2) { animation-delay: 1s; }
+.phase-heartbeat__item:nth-child(3) { animation-delay: 1.2s; }
+
+.phase-heartbeat__status-dot {
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--green-400);
+  box-shadow: 0 0 10px rgba(120,214,75,0.35);
+}
+
+.phase-heartbeat__status-text {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  line-height: 1.4;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--navy-200);
+  white-space: pre-line;
+}
+
+.phase-heartbeat__status-value {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: var(--green-400);
+}
+
+@keyframes phase-heartbeat-live {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.72);
+  }
+}
+
+@keyframes phase-heartbeat-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes phase-heartbeat-label {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes phase-heartbeat-item-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+
+@media (max-width: 1100px) {
+  .phase-pipeline__flow {
+    gap: 8px;
+  }
+
+  .phase-pipeline__arrow {
+    width: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .phase-map__canvas {
+    height: 280px;
+  }
+
+  .phase-map__node--goals,
+  .phase-map__node--constraints,
+  .phase-map__node--risks {
+    left: 0;
+  }
+
+  .phase-map__node--arch,
+  .phase-map__node--proj {
+    right: 0;
+  }
+
+  .phase-pipeline__flow {
+    flex-wrap: wrap;
+    row-gap: 14px;
+  }
+
+  .phase-pipeline__stage {
+    min-width: calc(50% - 14px);
+  }
+
+  .phase-pipeline__arrow {
+    display: none;
+  }
+
+  .phase-heartbeat__status {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .phase-visual__inner {
+    padding: 20px;
+  }
+
+  .phase-map__canvas {
+    height: 300px;
+  }
+
+  .phase-map__node {
+    font-size: 9px;
+    padding: 10px 12px;
+  }
+
+  .phase-map__node--goals { top: 12px; }
+  .phase-map__node--constraints { top: 104px; }
+  .phase-map__node--risks { top: 196px; }
+  .phase-map__node--arch { top: 32px; }
+  .phase-map__node--proj { top: 164px; }
+
+  .phase-pipeline__stage {
+    min-width: 100%;
+  }
+
+  .phase-pipeline__footer {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .phase-heartbeat__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .phase-heartbeat__chart {
+    padding-inline: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .phase-map__node--center,
+  .phase-pipeline__badge,
+  .phase-pipeline__coverage-fill,
+  .phase-heartbeat__live-dot,
+  .phase-heartbeat__line,
+  .phase-heartbeat__label,
+  .phase-heartbeat__item {
+    animation: none !important;
+  }
+}
