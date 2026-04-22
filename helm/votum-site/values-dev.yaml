@@ -1,0 +1,35 @@
+global:
+  namespace: votum-dev
+
+nameOverride: votum-site-dev
+
+image:
+  repository: nexus.k8s.corp.polygran.de/votum/votum-site-dev
+  tag: latest
+  pullPolicy: Always
+
+service:
+  type: ClusterIP
+  port: 80
+
+replicaCount: 1
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 128Mi
+
+hpa:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 70
+
+ingress:
+  enabled: true
+  className: nginx
+  host: votum.dev.polygran.io
+  tls: []
