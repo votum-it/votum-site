@@ -12,6 +12,7 @@ pipeline {
         NAMESPACE = 'votum-dev'
         DEPLOYMENT_NAME = 'votum-site-votum-site-dev'
         NEXUS_CREDENTIALS_ID = 'nexus-credentials'
+        K8S_CREDENTIALS_ID = 'k8s-jenkins-user'
 
     }
 
@@ -49,16 +50,12 @@ pipeline {
 
         stage('Deploy with Helm') {
             steps {
+                withCredentials([file(credentialsId: "${env.K8S_CREDENTIALS_ID}", variable: 'KUBECONFIG')]) {
+
                 script {
                     sh "helm upgrade --install votum-site ${env.HELM_CHART_PATH} -f ${env.VALUES_FILE} --namespace ${env.NAMESPACE}"
-                }
-            }
-        }
-
-        stage('Restart Deployment') {
-            steps {
-                script {
                     sh "kubectl rollout restart deployment ${env.DEPLOYMENT_NAME} -n ${env.NAMESPACE}"
+
                 }
             }
         }
