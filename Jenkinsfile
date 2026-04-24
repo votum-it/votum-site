@@ -1,4 +1,4 @@
-@Library('jenkins-shared-library')_
+@Library('jenkins-shared-library')
 
 pipeline {
     agent any
@@ -46,16 +46,15 @@ pipeline {
                     echo "Image pushed: ${result.imageName} with tags: ${result.imageTags}"
                 }
             }
-    }
+        }
 
         stage('Deploy with Helm') {
             steps {
                 withCredentials([file(credentialsId: "${env.K8S_CREDENTIALS_ID}", variable: 'KUBECONFIG')]) {
-
-                script {
-                    sh "helm upgrade --install votum-site ${env.HELM_CHART_PATH} -f ${env.VALUES_FILE} --namespace ${env.NAMESPACE}"
-                    sh "kubectl rollout restart deployment ${env.DEPLOYMENT_NAME} -n ${env.NAMESPACE}"
-
+                    script {
+                        sh "helm upgrade --install votum-site ${env.HELM_CHART_PATH} -f ${env.VALUES_FILE} --namespace ${env.NAMESPACE}"
+                        sh "kubectl rollout restart deployment ${env.DEPLOYMENT_NAME} -n ${env.NAMESPACE}"
+                    }
                 }
             }
         }
@@ -66,5 +65,4 @@ pipeline {
             cleanWs()
         }
     }
-}
 }
