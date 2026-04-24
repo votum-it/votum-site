@@ -8,13 +8,13 @@ export default function CtaBanner() {
     <section id="contact" className="cta-outer" ref={ref}>
       <div className="cta-banner reveal">
         <div>
-          <span className="cta-banner__eyebrow">Ready to build?</span>
+          <span className="cta-banner__eyebrow">Ready to transform your engineering?</span>
           <div className="cta-banner__title">
-            Let's engineer something you're proud of.
+            Let's build your competitive advantage.
           </div>
           <p className="cta-banner__sub">
-            Tell us about your project — we'll come back within 24 hours with
-            a clear first step, not a sales pitch.
+            Tell us about your vision — we'll come back within 24 hours with
+            a clear strategy, not a sales pitch.
           </p>
         </div>
 

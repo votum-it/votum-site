@@ -2,27 +2,27 @@ import { useState } from 'react'
 import './Cases.css'
 
 const heroCase = {
-  category: 'Technology Strategy & Consulting',
-  title: 'End-to-End Software Delivery Transformation for a Global Automotive Leader',
-  cardBody: 'A leading automotive manufacturer needed a trusted partner to transform, unify, and then operate their global software delivery and testing ecosystem — long term.',
-  summary: 'From fragmented tools to a unified, fully managed global platform — built and operated by VOTUM.',
-  challenge: 'A leading global automotive manufacturer was struggling with fragmented tools, siloed teams, and no visibility across their software delivery and testing lifecycle. Inconsistent processes across regions made governance nearly impossible — and once the platform was built, they needed a partner they could trust to run it.',
-  solution: 'We defined and executed a full transformation strategy — designing a centralized platform built on OpenText ALM & UFT and migrating all legacy systems into a single unified ecosystem. Following a successful rollout, we transitioned into a long-term managed services partnership: providing end-to-end operations, L1–L2 support, incident management, and continuous platform improvements under defined SLAs.',
-  outcome: 'A standardized, scalable platform with full lifecycle visibility — now reliably serving over 1,000 users worldwide with 98%+ availability. The client freed up internal resources, eliminated tool fragmentation, and gained a long-term partner for continuous improvement.',
-  tags: ['OpenText ALM', 'UFT', 'Enterprise Architecture', 'Managed Services', 'SLA Management', 'L1–L2 Support'],
+category: 'Data Migration & Cloud Architecture',
+  title: 'Data Archival and Migration for a Leading Insurance Group',
+  cardBody: 'A major European insurance group needed to decommission critical legacy platforms while preserving years of historical data, attachments, and audit trails — without vendor lock-in. The migration required careful orchestration across multiple business units with zero downtime during the transition. Our solution ensured complete data integrity, searchability, and compliance with regulatory requirements. Users gained immediate access to modernized systems with improved performance and reduced operational costs.',
+  summary: 'Migrated and archived enterprise ALM and PPM data from legacy OpenText SaaS to a cost-efficient, audit-ready AWS platform.',
+  challenge: 'A major European insurance group was decommissioning their OpenText ALM and PPM platforms but faced a critical requirement: large volumes of historical Oracle database records, extensive attachments, and strict audit and compliance obligations meant the data had to remain fully accessible, secure, and audit-ready — without staying tied to legacy vendor infrastructure.',
+  solution: 'We designed and implemented a scalable, cloud-native archival solution on AWS. The Oracle database was migrated to PostgreSQL on AWS RDS, ensuring full data integrity and schema optimization. All attachments and documents were extracted and structured to preserve their relationships with the underlying data. We also built a custom lightweight access tool — purpose-built for audit and compliance use cases — allowing easy querying of archived records and seamless retrieval of related files. The entire solution was built on AWS managed services for durability, security, and low operational overhead.',
+  outcome: '100% data preservation from OpenText ALM and PPM, a successful Oracle-to-PostgreSQL migration, and full audit readiness with fast access to historical records. The client eliminated their dependency on legacy SaaS platforms, reduced operational costs, and gained a modern, future-proof archive aligned with their long-term IT strategy.',
+  tags: ['AWS', 'PostgreSQL', 'Oracle Migration', 'OpenText ALM/PPM', 'Data Archival'],
   stats: [
-    { value: '1,000+', label: 'users worldwide' },
-    { value: '98%+', label: 'availability' },
-    { value: '100%', label: 'tool consolidation' },
+    { value: '100%', label: 'data preserved' },
+    { value: 'Zero', label: 'vendor lock-in' },
+    { value: 'Audit', label: 'ready' },
   ],
-  visual: 'transformation',
+  visual: 'platform',
 }
 
 const supportingCases = [
   {
     category: 'Asset Management Platform',
     title: 'Modern Digital Advisory Platform for a Leading Asset Manager',
-    cardBody: 'A leading asset management firm faced limitations with a legacy system — poor usability, limited scalability, and workflows that slowed down their consultants.',
+    cardBody: 'A leading asset management enterprise faced limitations with a legacy system — poor usability, limited scalability, and workflows that slowed down their consultants.',
     summary: 'Modernized manual workflows into an integrated digital platform.',
     challenge: 'A leading asset management firm was held back by a legacy platform that couldn\'t scale. Outdated workflows, poor UX, and siloed collaboration were slowing down their specialist investment consultants and limiting operational efficiency.',
     solution: 'We designed and built a modern, enterprise-grade web platform from scratch — covering planning, design, development, testing, and full rollout. The solution features a scalable microservices backend, a React frontend, secure authentication, and containerized deployment.',
@@ -54,13 +54,13 @@ const supportingCases = [
 ]
 
 const featureCase = {
-  category: 'Managed Services',
-  title: 'Managed Software Delivery & Test Operations for a Global Automotive Leader',
-  cardBody: 'After a major transformation, a global automotive manufacturer needed a trusted partner to operate and continuously improve their platform at scale.',
+  category: 'Managed Services & Operations',
+  title: 'End-to-End Software Delivery Transformation & Operations for a Global Automotive Leader',
+  cardBody: 'From platform transformation to 24/7 managed operations—ensuring reliability, scalability, and continuous improvement.',
   summary: 'Ensuring reliable operations and continuous improvement under defined SLAs.',
-  challenge: 'After completing a large-scale transformation, a global automotive manufacturer needed a trusted long-term partner to operate, maintain, and continuously improve their centralized software delivery and testing platform — at enterprise scale.',
-  solution: 'We provide end-to-end managed services for a platform supporting over 1,000 users worldwide. Our scope covers system maintenance, L1–L2 user support, incident management, and ongoing platform enhancements — all under clearly defined SLAs.',
-  outcome: 'Greater than 98% platform availability, significantly reduced internal workload, and continuous improvement — delivering stable, reliable operations and long-term scalability for the client\'s global teams.',
+  challenge: 'A leading automotive manufacturer struggled with fragmented tools, limited visibility, and inconsistent processes across global teams. Following a large-scale transformation, they required a trusted long-term partner to operate, maintain, and continuously improve their centralized software delivery and testing platform at enterprise scale.',
+  solution: 'We defined and executed a transformation strategy to unify software delivery and testing, designing a centralized platform based on OpenText ALM & UFT and migrating legacy systems into a single ecosystem. Building on this foundation, we provide end-to-end managed services for a platform supporting over 1,000 users worldwide. Our scope includes system maintenance, L1–L2 user support, incident management, and continuous platform enhancements—all under clearly defined SLAs.',
+  outcome: 'A standardized and scalable environment with full lifecycle visibility, combined with stable operations exceeding 98% availability. The client benefits from significantly reduced internal workload, continuous improvement, and a high-performing platform that ensures long-term scalability and consistent global operations.',
   tags: ['OpenText ALM/UFT', 'Managed Services', 'SLA Management', 'L1–L2 Support'],
   stats: [
     { value: '1,000+', label: 'users' },
@@ -77,7 +77,7 @@ const finalCase = {
   cardBody: 'A leading automotive manufacturer relied heavily on manual testing — resulting in slow releases, limited scalability, and growing delivery risk.',
   summary: 'Integrated testing directly into the release lifecycle with automation.',
   challenge: 'A leading automotive manufacturer was over-reliant on manual UI and functional testing. Slow release cycles, limited scalability, and growing system complexity were creating real risk — and the testing function couldn\'t keep pace with delivery demands.',
-  solution: 'We designed and implemented a comprehensive test automation framework from scratch using UFT, defined standardized testing processes, and integrated automated testing directly into the development and release lifecycle.',
+  solution: 'We designed and implemented a comprehensive test automation framework from scratch using world-class, industry-standard test automation platform, defined standardized testing processes, and integrated automated testing directly into the development and release lifecycle.',
   outcome: 'Significantly reduced manual testing effort, faster and more reliable release cycles, and improved test coverage across teams — enabling scalable, high-quality software delivery at enterprise pace.',
   tags: ['Test Automation', 'QA Strategy', 'Release Management', 'Process Standardization'],
   stats: [

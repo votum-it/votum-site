@@ -58,8 +58,7 @@ export default function Footer() {
 
           <p className="footer__tagline">
             Engineered for impact. <br />
-            We partner with ambitious companies to design, build, and scale
-            software that actually works.
+            From vision to operations, we own your engineering excellence.
           </p>
 
           <div className="footer__socials">
@@ -94,9 +93,9 @@ export default function Footer() {
       <div className="footer__bottom">
         <span>© {YEAR} VOTUM IT EOOD & Co KD | All rights reserved.</span>
         <div className="footer__bottom-right">
-          <a href="#privacy">Privacy Policy</a>
-          <a href="#terms">Terms of Service</a>
-          <a href="#cookies">Cookie Settings</a>
+          <a href="/privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+          <a href="/terms.html" target="_blank" rel="noopener noreferrer">Terms of Service</a>
+          <a href="/cookies.html" target="_blank" rel="noopener noreferrer">Cookie Policy</a>
         </div>
       </div>
     </footer>

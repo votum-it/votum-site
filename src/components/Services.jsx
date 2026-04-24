@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import useReveal from '../hooks/useReveal'
 import './Services.css'
 
@@ -16,11 +17,15 @@ const SERVICES = [
     ),
     title: 'Technology Strategy & Consulting',
     body: 'Make the right technology decisions before they become expensive ones. We work with your leadership to define clear roadmaps, evaluate build-vs-buy tradeoffs, and align your architecture with your long-term business goals.',
+    details: [
+      'We help organizations navigate complex technology decisions at critical junctures. Our approach combines deep technical expertise with business acumen to develop clear, actionable technology roadmaps. We conduct thorough architecture reviews, evaluate build-vs-buy scenarios with detailed cost-benefit analysis, assess vendor options objectively, and align your technical strategy with business objectives.',
+      'We work directly with C-suite and engineering leadership to identify technical debt, modernization priorities, and competitive advantages through technology. Our goal is to reduce risk, accelerate decision-making, and position your organization for sustainable growth without expensive missteps.',
+    ],
     tags: [
-      { label: 'Tech Audit',     variant: 'green' },
-      { label: 'Architecture Review', variant: 'green' },
-      { label: 'Vendor Selection',  variant: 'green'  },
-      { label: 'Due Diligence', variant: 'green' },
+      { label: 'Architecture Assessment',     variant: 'green' },
+      { label: 'Vendor Evaluation', variant: 'green' },
+      { label: 'Risk Reduction',  variant: 'green'  },
+      { label: 'Roadmap Planning', variant: 'green' },
     ],
   },
   {
@@ -37,12 +42,15 @@ const SERVICES = [
     ),
     title: 'Software Engineering',
     body: 'From product concept to production-ready code. We build scalable, maintainable applications designed to grow with your business — not become tomorrow\'s technical debt.',
-    tags: [
-      { label: 'React',   variant: 'teal' },
-      { label: 'Node.js', variant: 'teal' },
-      { label: 'TypeScript',   variant: 'teal' },
-      { label: 'GraphQL',  variant: 'teal' },
+    details: [
+      'We deliver custom software solutions built from the ground up with production excellence in mind. Whether you\'re launching a new product, modernizing legacy systems, or scaling an existing application, we architect and build systems designed for growth. Our engineering practice emphasizes clean code, comprehensive testing, automated deployment pipelines, and documentation that enables your team to maintain and evolve the product.' ,
+      'We pair senior engineers with your team, transferring knowledge and ensuring your in-house capabilities are strengthened. We focus on solving your actual business problems, not over-engineering solutions. Every line of code is designed to be maintainable, testable, and scalable — eliminating technical debt before it starts.',
     ],
+    tags: [
+      { label: 'Custom Development',   variant: 'teal' },
+      { label: 'Code Quality', variant: 'teal' },
+      { label: 'Scalability',   variant: 'teal' },
+          ],
   },
   {
     variant: 'green',
@@ -60,11 +68,15 @@ const SERVICES = [
     ),
     title: 'DevOps & Cloud',
     body: 'Infrastructure that doesn\'t slow your team down. We design and operate CI/CD pipelines, containerized environments, and cloud-native platforms built for speed, reliability, and scale.',
+    details: [
+      'Infrastructure is the backbone of modern software delivery, and it shouldn\'t be a bottleneck. We design and manage cloud architectures that enable your team to deploy with confidence and operate reliably at scale. Our services include CI/CD pipeline design and implementation, containerization strategies using Docker and Kubernetes, multi-cloud and hybrid cloud architecture, infrastructure-as-code practices, automated monitoring and alerting, disaster recovery and business continuity planning, and cost optimization across cloud platforms.', 
+      'We handle the operational burden — infrastructure provisioning, scaling, security patching, and incident response — so your engineers focus on product development. Whether you\'re migrating from on-premises infrastructure or optimizing existing cloud environments, we reduce operational friction and enable rapid, safe deployments.',
+    ],
     tags: [
-      { label: 'AWS',        variant: 'green' },
-      { label: 'Terraform',     variant: 'green' },
-      { label: 'Kubernetes', variant: 'green' },
-      { label: 'GitHub Actions',      variant: 'green' },
+      { label: 'CI/CD Pipelines',        variant: 'green' },
+      { label: 'Infrastructure-as-Code',     variant: 'green' },
+      { label: 'Containerization', variant: 'green' },
+      { label: 'Cloud Architecture',      variant: 'green' },
     ],
   },
   {
@@ -80,15 +92,20 @@ const SERVICES = [
         <rect x="2" y="3" width="20" height="14" rx="2"/>
         <line x1="8" y1="21" x2="16" y2="21"/>
         <line x1="12" y1="17" x2="12" y2="21"/>
-  <     polyline points="6 9 9 12 12 9 15 12 18 9"/>
+        <polyline points="6 9 9 12 12 9 15 12 18 9"/>
       </svg>
     ),
     title: 'Managed Services & Operations',
     body: 'We don\'t just build and hand off. We stay on to monitor, maintain, and continuously improve your systems — so your team focuses on features, not firefighting.',
+    details: [
+      'Production systems require continuous care. We provide comprehensive managed services to keep your applications running smoothly and improving over time. This includes 24/7 system monitoring and alerting, proactive incident response and root cause analysis, performance optimization and tuning, security patching and vulnerability management, regular health audits and recommendations, capacity planning and scaling decisions, and documentation updates.', 
+      'Rather than reactive troubleshooting, we take a proactive approach — identifying issues before they impact users, optimizing systems based on real usage patterns, and continuously improving reliability. Your team focuses on building new features while we ensure infrastructure stability, performance, and security. We provide regular reports on system health, incident summaries, and optimization recommendations so you stay informed without the operational overhead.',
+    ],
     tags: [
       { label: 'Incident Management',    variant: 'teal' },
       { label: '24/7 Monitoring', variant: 'teal' },
-      { label: 'Performance Tuning',        variant: 'teal' },
+      { label: 'Optimization',        variant: 'teal' },
+      { label: 'Proactive Maintenance',        variant: 'teal' },
     ],
   },
   {
@@ -106,11 +123,15 @@ const SERVICES = [
     ),
     title: 'Quality Engineering & Test Automation',
     body: 'Comprehensive testing strategies ensuring reliability at every layer. We build automated test suites, implement quality gates, and establish processes that catch issues before they reach production.',
+    details: [
+      'Shipping with confidence requires more than manual testing. We establish quality engineering practices that catch issues early and scale with your product. Our approach includes test strategy development aligned with your product roadmap, automated unit and integration testing frameworks, end-to-end test automation for critical user flows, performance and load testing to identify bottlenecks, security testing and vulnerability scanning, continuous integration test execution, and quality metrics dashboards.', 
+      'We implement testing at every layer — from unit tests during development to production monitoring and synthetic testing. We work with your team to establish quality gates that enforce standards without slowing deployment velocity. This means fewer production incidents, faster feedback loops, and the confidence to ship features quickly. Our goal is to make quality invisible — testing so thorough and automated that it becomes part of your normal development rhythm, not a bottleneck.',
+    ],
     tags: [
-      { label: 'Playwright',       variant: 'green' },
-      { label: 'Jest',  variant: 'green' },
+      { label: 'Test Automation',       variant: 'green' },
+      { label: 'Quality Strategy',  variant: 'green' },
       { label: 'Performance Testing',    variant: 'green' },
-      { label: 'Test Strategy', variant: 'green' },
+      { label: 'Quality Gates', variant: 'green' },
     ],
   },
 ]
@@ -118,10 +139,12 @@ const SERVICES = [
 const DELAY = ['reveal-delay-1', 'reveal-delay-2', 'reveal-delay-3', 'reveal-delay-4', 'reveal-delay-5']
 
 export default function Services() {
+  const [selectedService, setSelectedService] = useState(null)
   const ref = useReveal()
 
   return (
-    <section id="services" className="section" ref={ref}>
+    <>
+      <section id="services" className="section" ref={ref}>
       <div className="section-header reveal">
         <span className="eyebrow">What we do</span>
         <h2>End-to-end engineering</h2>
@@ -142,12 +165,45 @@ export default function Services() {
                 <span key={t.label} className={`tag tag--${t.variant}`}>{t.label}</span>
               ))}
             </div>
-             <span className="service-card__link">Learn more →</span>
+            <button type="button" className="service-card__link" onClick={() => setSelectedService(svc)}>
+              Learn more →
+            </button>
           </div>
         ))}
       </div>
-
-      
+      <ServiceModal item={selectedService} onClose={() => setSelectedService(null)} />
     </section>
+  </>
+  )
+}
+
+function ServiceModal({ item, onClose }) {
+  useEffect(() => {
+    if (!item) return
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') onClose()
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [item, onClose])
+
+  if (!item) return null
+
+  return (
+    <div className="service-modal-overlay" onClick={onClose}>
+      <div className="service-modal" onClick={(event) => event.stopPropagation()}>
+        <button className="service-modal__close" onClick={onClose} aria-label="Close details">
+          ✕
+        </button>
+        <div className="service-modal__header">
+          <span className="service-modal__eyebrow">{item.title}</span>
+        </div>
+        <div className="service-modal__content">
+          {item.details?.map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
+          ))}
+        </div>
+      </div>
+    </div>
   )
 }
