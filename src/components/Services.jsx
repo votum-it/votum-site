@@ -165,8 +165,10 @@ export default function Services() {
             key={svc.title}
             className={`service-card service-card--${svc.variant} reveal ${DELAY[i]}`}
           >
-            <div className="service-card__icon">{svc.icon}</div>
-            <div className="service-card__title">{svc.title}</div>
+            <div className="service-card__heading">
+              <div className="service-card__icon">{svc.icon}</div>
+              <div className="service-card__title">{svc.title}</div>
+            </div>
             <div className="service-card__body">{svc.body}</div>
             <div className="service-card__tags">
               {svc.tags.map((t) => (

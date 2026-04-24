@@ -175,7 +175,7 @@
   }
 
   .feature-strip__visual {
-    aspect-ratio: auto;
+    display: none;
   }
 
   .feature-strip__title {

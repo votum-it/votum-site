@@ -106,9 +106,15 @@
 .service-card--navy:hover   { border-color: rgba(106,106,173,0.4); }
 
 /* Icon */
+.service-card__heading {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
 .service-card__icon {
   width: 48px; height: 48px; border-radius: 12px;
-  margin-bottom: 24px;
   display: flex; align-items: center; justify-content: center;
 }
 .service-card--green  .service-card__icon { background: rgba(120,214,75,0.15); }
@@ -120,14 +126,13 @@
 
 .service-card__title {
   font-family: var(--font-display);
-  font-size: 20px; font-weight: 700; margin-bottom: 12px;
+  font-size: 20px; font-weight: 700;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* FIX: set min-height to ensure consistent space for titles,
-     so descriptions align the same across all cards */
   min-height: 56px;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  margin: 0;
 }
 .service-card__body {
   /* FIX: bumped from 14px to 15px — improves readability on dark backgrounds */
@@ -270,6 +275,7 @@
 
 @media (max-width: 900px) {
   .services-grid { grid-template-columns: 1fr; }
+  .services-grid .service-card { grid-column: auto !important; }
 }
 
 @media (max-width: 640px) {
