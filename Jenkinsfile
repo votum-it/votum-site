@@ -1,4 +1,4 @@
-@Library('jenkins-shared-library') _
+@Library('jenkins-shared-library')_
 
 pipeline {
     agent any
@@ -14,7 +14,12 @@ pipeline {
         NEXUS_CREDENTIALS_ID = 'nexus-credentials'
         K8S_CREDENTIALS_ID = 'k8s-jenkins-user'
     }
-
+    post {
+        always {
+            cleanWs()
+        }
+    }
+    
     stages {
         stage('Checkout') {
             steps {
@@ -57,12 +62,6 @@ pipeline {
                     sh "kubectl rollout restart deployment ${env.DEPLOYMENT_NAME} -n ${env.NAMESPACE}"
                 }
             }
-        }
-    }
-
-    post {
-        always {
-            cleanWs()
         }
     }
 }
