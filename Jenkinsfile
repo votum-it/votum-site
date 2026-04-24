@@ -6,6 +6,7 @@ pipeline {
     environment {
         NEXUS_URL = 'nexus.k8s.corp.polygran.de/votum/'
         IMAGE_NAME = 'votum-site-dev'
+        IMAGE_TAGS = "latest,${env.BUILD_NUMBER}"
         HELM_CHART_PATH = './helm/votum-site'
         VALUES_FILE = './helm/votum-site/values-dev.yaml'
         NAMESPACE = 'votum-dev'
@@ -24,6 +25,7 @@ pipeline {
                 script {
                     docker.buildImage(
                         imageName: IMAGE_NAME,
+                        imageTags: IMAGE_TAGS.tokenize(",")
                     )
                 }
             }
