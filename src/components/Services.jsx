@@ -18,7 +18,8 @@ const SERVICES = [
     title: 'Technology Strategy & Consulting',
     body: 'Make the right technology decisions before they become expensive ones. We work with your leadership to define clear roadmaps, evaluate build-vs-buy tradeoffs, and align your architecture with your long-term business goals.',
     details: [
-      'We help organizations navigate complex technology decisions at critical junctures. Our approach combines deep technical expertise with business acumen to develop clear, actionable technology roadmaps. We conduct thorough architecture reviews, evaluate build-vs-buy scenarios with detailed cost-benefit analysis, assess vendor options objectively, and align your technical strategy with business objectives.',
+      'We help organizations navigate complex technology decisions at critical junctures. Our approach combines deep technical expertise with business acumen to develop clear, actionable technology roadmaps.',  
+      'We conduct thorough architecture reviews, evaluate build-vs-buy scenarios with detailed cost-benefit analysis, assess vendor options objectively, and align your technical strategy with business objectives.',
       'We work directly with C-suite and engineering leadership to identify technical debt, modernization priorities, and competitive advantages through technology. Our goal is to reduce risk, accelerate decision-making, and position your organization for sustainable growth without expensive missteps.',
     ],
     tags: [
@@ -43,8 +44,10 @@ const SERVICES = [
     title: 'Software Engineering',
     body: 'From product concept to production-ready code. We build scalable, maintainable applications designed to grow with your business — not become tomorrow\'s technical debt.',
     details: [
-      'We deliver custom software solutions built from the ground up with production excellence in mind. Whether you\'re launching a new product, modernizing legacy systems, or scaling an existing application, we architect and build systems designed for growth. Our engineering practice emphasizes clean code, comprehensive testing, automated deployment pipelines, and documentation that enables your team to maintain and evolve the product.' ,
-      'We pair senior engineers with your team, transferring knowledge and ensuring your in-house capabilities are strengthened. We focus on solving your actual business problems, not over-engineering solutions. Every line of code is designed to be maintainable, testable, and scalable — eliminating technical debt before it starts.',
+      'We deliver custom software solutions built from the ground up with production excellence in mind. Whether you\'re launching a new product, modernizing legacy systems, or scaling an existing application, we architect and build systems designed for growth.', 
+      'Our engineering practice emphasizes clean code, comprehensive testing, automated deployment pipelines, and documentation that enables your team to maintain and evolve the product.' ,
+      'We pair senior engineers with your team, transferring knowledge and ensuring your in-house capabilities are strengthened. We focus on solving your actual business problems, not over-engineering solutions.', 
+      'Every line of code is designed to be maintainable, testable, and scalable — eliminating technical debt before it starts.',
     ],
     tags: [
       { label: 'Custom Development',   variant: 'teal' },
@@ -69,7 +72,8 @@ const SERVICES = [
     title: 'DevOps & Cloud',
     body: 'Infrastructure that doesn\'t slow your team down. We design and operate CI/CD pipelines, containerized environments, and cloud-native platforms built for speed, reliability, and scale.',
     details: [
-      'Infrastructure is the backbone of modern software delivery, and it shouldn\'t be a bottleneck. We design and manage cloud architectures that enable your team to deploy with confidence and operate reliably at scale. Our services include CI/CD pipeline design and implementation, containerization strategies using Docker and Kubernetes, multi-cloud and hybrid cloud architecture, infrastructure-as-code practices, automated monitoring and alerting, disaster recovery and business continuity planning, and cost optimization across cloud platforms.', 
+      'Infrastructure is the backbone of modern software delivery, and it shouldn\'t be a bottleneck. We design and manage cloud architectures that enable your team to deploy with confidence and operate reliably at scale.', 
+      'Our services include CI/CD pipeline design and implementation, containerization strategies using Docker and Kubernetes, multi-cloud and hybrid cloud architecture, infrastructure-as-code practices, automated monitoring and alerting, disaster recovery and business continuity planning, and cost optimization across cloud platforms.', 
       'We handle the operational burden — infrastructure provisioning, scaling, security patching, and incident response — so your engineers focus on product development. Whether you\'re migrating from on-premises infrastructure or optimizing existing cloud environments, we reduce operational friction and enable rapid, safe deployments.',
     ],
     tags: [
@@ -98,8 +102,10 @@ const SERVICES = [
     title: 'Managed Services & Operations',
     body: 'We don\'t just build and hand off. We stay on to monitor, maintain, and continuously improve your systems — so your team focuses on features, not firefighting.',
     details: [
-      'Production systems require continuous care. We provide comprehensive managed services to keep your applications running smoothly and improving over time. This includes 24/7 system monitoring and alerting, proactive incident response and root cause analysis, performance optimization and tuning, security patching and vulnerability management, regular health audits and recommendations, capacity planning and scaling decisions, and documentation updates.', 
-      'Rather than reactive troubleshooting, we take a proactive approach — identifying issues before they impact users, optimizing systems based on real usage patterns, and continuously improving reliability. Your team focuses on building new features while we ensure infrastructure stability, performance, and security. We provide regular reports on system health, incident summaries, and optimization recommendations so you stay informed without the operational overhead.',
+      'Production systems require continuous care. We provide comprehensive managed services to keep your applications running smoothly and improving over time.',
+      'This includes 24/7 system monitoring and alerting, proactive incident response and root cause analysis, performance optimization and tuning, security patching and vulnerability management, regular health audits and recommendations, capacity planning and scaling decisions, and documentation updates.', 
+      'Rather than reactive troubleshooting, we take a proactive approach — identifying issues before they impact users, optimizing systems based on real usage patterns, and continuously improving reliability.', 
+      'Your team focuses on building new features while we ensure infrastructure stability, performance, and security. We provide regular reports on system health, incident summaries, and optimization recommendations so you stay informed without the operational overhead.',
     ],
     tags: [
       { label: 'Incident Management',    variant: 'teal' },
@@ -124,8 +130,10 @@ const SERVICES = [
     title: 'Quality Engineering & Test Automation',
     body: 'Comprehensive testing strategies ensuring reliability at every layer. We build automated test suites, implement quality gates, and establish processes that catch issues before they reach production.',
     details: [
-      'Shipping with confidence requires more than manual testing. We establish quality engineering practices that catch issues early and scale with your product. Our approach includes test strategy development aligned with your product roadmap, automated unit and integration testing frameworks, end-to-end test automation for critical user flows, performance and load testing to identify bottlenecks, security testing and vulnerability scanning, continuous integration test execution, and quality metrics dashboards.', 
-      'We implement testing at every layer — from unit tests during development to production monitoring and synthetic testing. We work with your team to establish quality gates that enforce standards without slowing deployment velocity. This means fewer production incidents, faster feedback loops, and the confidence to ship features quickly. Our goal is to make quality invisible — testing so thorough and automated that it becomes part of your normal development rhythm, not a bottleneck.',
+      'Shipping with confidence requires more than manual testing. We establish quality engineering practices that catch issues early and scale with your product.', 
+      'Our approach includes test strategy development aligned with your product roadmap, automated unit and integration testing frameworks, end-to-end test automation for critical user flows, performance and load testing to identify bottlenecks, security testing and vulnerability scanning, continuous integration test execution, and quality metrics dashboards.', 
+      'We implement testing at every layer — from unit tests during development to production monitoring and synthetic testing. We work with your team to establish quality gates that enforce standards without slowing deployment velocity.', 
+      'This means fewer production incidents, faster feedback loops, and the confidence to ship features quickly. Our goal is to make quality invisible — testing so thorough and automated that it becomes part of your normal development rhythm, not a bottleneck.',
     ],
     tags: [
       { label: 'Test Automation',       variant: 'green' },
@@ -189,6 +197,15 @@ function ServiceModal({ item, onClose }) {
 
   if (!item) return null
 
+  // Map service titles to their modal titles
+  const modalTitles = {
+    'Technology Strategy & Consulting': 'Make confident technology decisions',
+    'Software Engineering': 'Custom software built for excellence',
+    'DevOps & Cloud': 'Infrastructure that scales with you',
+    'Managed Services & Operations': 'Always-on operations and support',
+    'Quality Engineering & Test Automation': 'Ship with confidence',
+  }
+
   return (
     <div className="service-modal-overlay" onClick={onClose}>
       <div className="service-modal" onClick={(event) => event.stopPropagation()}>
@@ -197,6 +214,7 @@ function ServiceModal({ item, onClose }) {
         </button>
         <div className="service-modal__header">
           <span className="service-modal__eyebrow">{item.title}</span>
+          <h2 className="service-modal__title">{modalTitles[item.title]}</h2>
         </div>
         <div className="service-modal__content">
           {item.details?.map((paragraph, index) => (

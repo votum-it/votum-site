@@ -169,68 +169,92 @@
   position: fixed;
   inset: 0;
   z-index: 50;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 24px;
+  backdrop-filter: blur(2px);
 }
 
 .service-modal {
   width: min(100%, 760px);
   max-height: min(100vh, 840px);
   overflow-y: auto;
-  background: var(--navy-900);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--navy-800);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-3xl);
-  box-shadow: 0 32px 96px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 32px 96px rgba(0, 0, 0, 0.35);
   position: relative;
-  padding: 40px 36px 32px;
+  padding: 48px 40px 40px;
 }
 
 .service-modal__close {
   position: absolute;
-  top: 18px;
-  right: 18px;
-  width: 38px;
-  height: 38px;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
   border: none;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--navy-100);
-  font-size: 18px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--navy-200);
+  font-size: 20px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s;
 }
 
 .service-modal__close:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--white);
 }
 
 .service-modal__header {
-  margin-bottom: 28px;
+  margin-bottom: 36px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .service-modal__eyebrow {
-  display: inline-block;
-  margin-bottom: 18px;
-  font-size: 18px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
+  display: block;
+  margin-bottom: 16px;
+  font-size: 14px; /* increased from 13px */
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--green-400);
 }
 
+.service-modal__title {
+  font-family: var(--font-display);
+  font-size: 32px; /* large, prominent title */
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--white);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
 .service-modal__summary {
-  color: var(--navy-200);
+  color: var(--white);
   font-size: 16px;
   line-height: 1.75;
+}
+
+.service-modal__content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .service-modal__content p {
   color: var(--navy-200);
   font-size: 15px;
   line-height: 1.8;
-  margin-bottom: 22px;
+  margin: 0;
 }
 
 .service-modal__tags {
