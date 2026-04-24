@@ -11,6 +11,8 @@ pipeline {
         VALUES_FILE = './helm/votum-site/values-dev.yaml'
         NAMESPACE = 'votum-dev'
         DEPLOYMENT_NAME = 'votum-site-votum-site-dev'
+        NEXUS_CREDENTIALS_ID = 'nexus-credentials'
+
     }
 
     stages {
