@@ -1,8 +1,11 @@
+@Library('jenkins-shared-library')_
+
 pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = 'nexus.k8s.corp.polygran.de/votum/votum-site-dev:latest'
+        NEXUS_URL = 'nexus.k8s.corp.polygran.de/votum/'
+        IMAGE_NAME = 'votum-site-dev'
         HELM_CHART_PATH = './helm/votum-site'
         VALUES_FILE = './helm/votum-site/values-dev.yaml'
         NAMESPACE = 'votum-dev'
@@ -19,20 +22,26 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build(env.DOCKER_IMAGE, '.')
+                    docker.buildImage(
+                        imageName: IMAGE_NAME,
+                    )
                 }
             }
         }
 
-        stage('Push Docker Image') {
+         stage('Push Docker Image to Nexus') {
             steps {
                 script {
-                    docker.withRegistry('https://nexus.k8s.corp.polygran.de', 'nexus-credentials') {
-                        docker.image(env.DOCKER_IMAGE).push()
-                    }
+                    def result = docker.pushDockerImageToNexus(
+                        nexusUrl: NEXUS_URL,
+                        imageName: IMAGE_NAME,
+                        imageTags: IMAGE_TAGS.tokenize(","),
+                        nexusCredentialsId: NEXUS_CREDENTIALS_ID
+                    )
+                    echo "Image pushed: ${result.imageName} with tags: ${result.imageTags}"
                 }
             }
-        }
+    }
 
         stage('Deploy with Helm') {
             steps {
