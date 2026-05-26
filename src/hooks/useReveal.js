@@ -1,36 +1,42 @@
 import { useEffect, useRef } from 'react'
 
-/**
- * useReveal — attaches an IntersectionObserver to a container ref
- * and adds the 'visible' class to any .reveal children when they
- * enter the viewport. Returns the ref to attach to your wrapper element.
- *
- * Usage:
- *   const ref = useReveal()
- *   return <section ref={ref}><div className="reveal">...</div></section>
- */
 export default function useReveal(threshold = 0.2) {
   const ref = useRef(null)
 
   useEffect(() => {
-    const el = ref.current
-    if (!el) return
+    const container = ref.current
+    if (!container) return
 
-    const observer = new IntersectionObserver(
+    const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible')
-            observer.unobserve(entry.target)
+            io.unobserve(entry.target)
           }
         })
       },
       { threshold }
     )
 
-    el.querySelectorAll('.reveal').forEach((child) => observer.observe(child))
+    const observe = (el) => {
+      if (!el.classList.contains('visible')) io.observe(el)
+    }
 
-    return () => observer.disconnect()
+    // Observe elements present on mount
+    container.querySelectorAll('.reveal').forEach(observe)
+
+    // Re-observe any .reveal elements added or updated later (language switches
+    // update text in-place, but if new DOM nodes appear they need observation too)
+    const mo = new MutationObserver(() => {
+      container.querySelectorAll('.reveal').forEach(observe)
+    })
+    mo.observe(container, { childList: true, subtree: true })
+
+    return () => {
+      io.disconnect()
+      mo.disconnect()
+    }
   }, [threshold])
 
   return ref

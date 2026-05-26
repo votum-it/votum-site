@@ -1,25 +1,7 @@
+import { useLanguage } from '../context/useLanguage'
 import './Footer.css'
 
 const YEAR = new Date().getFullYear()
-
-const COLUMNS = [
-  {
-    title: 'Company',
-    links: [
-      { label: 'About', href: '#about' },
-      { label: 'Our work', href: '#cases' },
-      { label: 'Blog', href: '#blog' },
-      { label: 'Careers', href: '#careers' },
-    ],
-  },
-  {
-    title: 'Contact',
-    links: [
-      { label: 'info@votum.com', href: 'mailto:info@votum.com' },
-      { label: '+359 895 101 122', href: '#contact' },
-    ],
-  },
-]
 
 function IconLinkedIn() {
   return (
@@ -48,6 +30,9 @@ function IconX() {
 }
 
 export default function Footer() {
+  const { locale } = useLanguage()
+  const t = locale.footer
+
   return (
     <footer className="footer">
       <div className="footer__main">
@@ -57,8 +42,9 @@ export default function Footer() {
           </div>
 
           <p className="footer__tagline">
-            Engineered for impact. <br />
-            From vision to operations, we own your engineering excellence.
+            {t.tagline.split('\n').map((line, i) => (
+              <span key={i}>{line}{i === 0 && <br />}</span>
+            ))}
           </p>
 
           <div className="footer__socials">
@@ -75,7 +61,7 @@ export default function Footer() {
         </div>
 
         <div className="footer__right">
-          {COLUMNS.map((col) => (
+          {t.cols.map((col) => (
             <div key={col.title} className="footer__col">
               <div className="footer__col-title">{col.title}</div>
               <ul className="footer__links">
@@ -91,11 +77,11 @@ export default function Footer() {
       </div>
 
       <div className="footer__bottom">
-        <span>© {YEAR} VOTUM IT EOOD & Co KD | All rights reserved.</span>
+        <span>© {YEAR} {t.copyright}</span>
         <div className="footer__bottom-right">
-          <a href="/privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
-          <a href="/terms.html" target="_blank" rel="noopener noreferrer">Terms of Service</a>
-          <a href="/cookies.html" target="_blank" rel="noopener noreferrer">Cookie Policy</a>
+          <a href="/privacy.html" target="_blank" rel="noopener noreferrer">{t.privacy}</a>
+          <a href="/terms.html" target="_blank" rel="noopener noreferrer">{t.terms}</a>
+          <a href="/cookies.html" target="_blank" rel="noopener noreferrer">{t.cookies}</a>
         </div>
       </div>
     </footer>

@@ -1,150 +1,95 @@
-import { useEffect, useRef } from 'react'
 import './PhaseVisuals.css'
 
+// ── PhaseMap ────────────────────────────────────────────────
+// Pure SVG — no DOM measurement, no resize listener, no refs.
+// Bezier curves connect input nodes → STRATEGY center → output nodes.
+// Replaces the old DOM-measured line approach.
+
 export default function PhaseMap() {
-  const canvasRef = useRef(null)
-  const svgRef = useRef(null)
-
-  const goalsRef = useRef(null)
-  const constraintsRef = useRef(null)
-  const risksRef = useRef(null)
-  const scopeRef = useRef(null)
-  const archRef = useRef(null)
-  const projRef = useRef(null)
-
-  useEffect(() => {
-    const drawMapLines = () => {
-      const canvas = canvasRef.current
-      const svg = svgRef.current
-
-      if (!canvas || !svg) return
-
-      const rect = canvas.getBoundingClientRect()
-
-      const getPos = (el) => {
-        const r = el.getBoundingClientRect()
-        return {
-          x: r.left - rect.left + r.width / 2,
-          y: r.top - rect.top + r.height / 2,
-          w: r.width,
-          h: r.height,
-        }
-      }
-
-      const pos = {
-        goals: getPos(goalsRef.current),
-        constraints: getPos(constraintsRef.current),
-        risks: getPos(risksRef.current),
-        scope: getPos(scopeRef.current),
-        arch: getPos(archRef.current),
-        proj: getPos(projRef.current),
-      }
-
-      svg.innerHTML = `
-        <defs>
-          <marker id="phase-map-arrow-dim" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
-            <path d="M0,0 L7,3.5 L0,7 Z" fill="rgba(255,255,255,0.16)" />
-          </marker>
-          <marker id="phase-map-arrow-green" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
-            <path d="M0,0 L7,3.5 L0,7 Z" fill="rgba(120,214,75,1)" />
-          </marker>
-        </defs>
-      `
-
-      const line = (x1, y1, x2, y2, green = false, dashed = false) => {
-        const el = document.createElementNS('http://www.w3.org/2000/svg', 'line')
-        el.setAttribute('x1', x1)
-        el.setAttribute('y1', y1)
-        el.setAttribute('x2', x2)
-        el.setAttribute('y2', y2)
-        el.setAttribute('stroke', green ? 'rgba(120,214,75,0.95)' : 'rgba(255,255,255,0.16)')
-        el.setAttribute('stroke-width', green ? '1.5' : '1')
-        el.setAttribute('marker-end', green ? 'url(#phase-map-arrow-green)' : 'url(#phase-map-arrow-dim)')
-        if (dashed) el.setAttribute('stroke-dasharray', '5 4')
-        svg.appendChild(el)
-      }
-
-      line(
-        pos.goals.x + pos.goals.w / 2,
-        pos.goals.y,
-        pos.scope.x - pos.scope.w / 2,
-        pos.scope.y - 10
-      )
-
-      line(
-        pos.constraints.x + pos.constraints.w / 2,
-        pos.constraints.y,
-        pos.scope.x - pos.scope.w / 2,
-        pos.scope.y,
-        true,
-        true
-      )
-
-      line(
-        pos.risks.x + pos.risks.w / 2,
-        pos.risks.y,
-        pos.scope.x - pos.scope.w / 2,
-        pos.scope.y + 10
-      )
-
-      line(
-        pos.scope.x + pos.scope.w / 2,
-        pos.scope.y - 10,
-        pos.arch.x - pos.arch.w / 2,
-        pos.arch.y
-      )
-
-      line(
-        pos.scope.x + pos.scope.w / 2,
-        pos.scope.y + 10,
-        pos.proj.x - pos.proj.w / 2,
-        pos.proj.y
-      )
-    }
-
-    drawMapLines()
-    window.addEventListener('resize', drawMapLines)
-
-    return () => {
-      window.removeEventListener('resize', drawMapLines)
-    }
-  }, [])
-
   return (
     <div className="phase-visual phase-map" aria-hidden="true">
       <div className="phase-visual__inner">
-        <span className="phase-visual__eyebrow">Phase 01 — Discovery</span>
+        <span className="phase-visual__eyebrow">Phase 01 — Discovery &amp; Strategy</span>
         <div className="phase-visual__title">The Map</div>
 
-        <div className="phase-map__canvas" ref={canvasRef}>
-          <svg className="phase-map__svg" ref={svgRef} />
+        <div className="phase-map__svg-wrap">
+          <svg
+            className="phase-map__svg"
+            viewBox="0 0 640 220"
+            preserveAspectRatio="xMidYMid meet"
+          >
+            <defs>
+              <marker id="pm-arr-dim" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                <path d="M0,0 L8,4 L0,8 Z" fill="rgba(255,255,255,0.18)" />
+              </marker>
+              <marker id="pm-arr-green" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                <path d="M0,0 L8,4 L0,8 Z" fill="rgba(120,214,75,0.85)" />
+              </marker>
+              <marker id="pm-arr-teal" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                <path d="M0,0 L8,4 L0,8 Z" fill="rgba(106,214,161,0.75)" />
+              </marker>
+            </defs>
 
-          <div ref={goalsRef} className="phase-map__node phase-map__node--input phase-map__node--goals">
-            Goals
-          </div>
+            {/* Input → Strategy curves */}
+            <path d="M 132,40  C 240,40  240,108 318,108" fill="none" stroke="rgba(255,255,255,0.14)" strokeWidth="1.2" markerEnd="url(#pm-arr-dim)"   strokeDasharray="5 4" />
+            <path d="M 148,90  C 240,90  240,108 318,108" fill="none" stroke="rgba(120,214,75,0.7)"   strokeWidth="1.4" markerEnd="url(#pm-arr-green)"          />
+            <path d="M 136,140 C 240,140 240,110 318,112" fill="none" stroke="rgba(255,255,255,0.14)" strokeWidth="1.2" markerEnd="url(#pm-arr-dim)"   strokeDasharray="5 4" />
+            <path d="M 148,185 C 240,185 240,116 318,116" fill="none" stroke="rgba(255,255,255,0.14)" strokeWidth="1.2" markerEnd="url(#pm-arr-dim)"   strokeDasharray="5 4" />
 
-          <div ref={constraintsRef} className="phase-map__node phase-map__node--input phase-map__node--constraints">
-            Constraints
-          </div>
+            {/* Strategy → Output curves */}
+            <path d="M 422,100 C 500,100 500,48  508,48"  fill="none" stroke="rgba(106,214,161,0.6)" strokeWidth="1.4" markerEnd="url(#pm-arr-teal)" />
+            <path d="M 422,110 C 500,110 500,112 508,112" fill="none" stroke="rgba(106,214,161,0.5)" strokeWidth="1.4" markerEnd="url(#pm-arr-teal)" />
+            <path d="M 422,118 C 500,118 500,174 508,174" fill="none" stroke="rgba(106,214,161,0.4)" strokeWidth="1.2" markerEnd="url(#pm-arr-teal)" strokeDasharray="5 4" />
 
-          <div ref={risksRef} className="phase-map__node phase-map__node--input phase-map__node--risks">
-            Risks
-          </div>
+            {/* ── Input nodes ── */}
+            <rect x="4"  y="20"  width="128" height="36" rx="7" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.09)" strokeWidth="1" />
+            <circle cx="18" cy="38" r="4" fill="rgba(172,172,209,0.35)" />
+            <text x="28" y="34" fontFamily="var(--font-mono)" fontSize="8.5" fill="var(--navy-400)" letterSpacing="1">BUSINESS GOALS</text>
+            <text x="28" y="46" fontFamily="var(--font-mono)" fontSize="9.5" fill="var(--navy-200)" fontWeight="700" letterSpacing="0.5">12 objectives</text>
 
-          <div ref={scopeRef} className="phase-map__node phase-map__node--center">
-            Scope
-          </div>
+            <rect x="4"  y="70"  width="144" height="36" rx="7" fill="rgba(120,214,75,0.05)" stroke="rgba(120,214,75,0.25)" strokeWidth="1" />
+            <circle cx="18" cy="88" r="4" fill="rgba(120,214,75,0.6)" />
+            <text x="28" y="84" fontFamily="var(--font-mono)" fontSize="8.5" fill="var(--navy-400)" letterSpacing="1">TECH AUDIT</text>
+            <text x="28" y="96" fontFamily="var(--font-mono)" fontSize="9.5" fill="var(--green-400)" fontWeight="700" letterSpacing="0.5">14 findings</text>
 
-          <div ref={archRef} className="phase-map__node phase-map__node--output phase-map__node--arch">
-            Architecture Doc
-          </div>
+            <rect x="4"  y="120" width="132" height="36" rx="7" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.09)" strokeWidth="1" />
+            <circle cx="18" cy="138" r="4" fill="rgba(172,172,209,0.35)" />
+            <text x="28" y="134" fontFamily="var(--font-mono)" fontSize="8.5" fill="var(--navy-400)" letterSpacing="1">RISK INVENTORY</text>
+            <text x="28" y="146" fontFamily="var(--font-mono)" fontSize="9.5" fill="var(--navy-200)" fontWeight="700" letterSpacing="0.5">8 identified</text>
 
-          <div ref={projRef} className="phase-map__node phase-map__node--output phase-map__node--proj">
-            Project Scope
-          </div>
+            <rect x="4"  y="170" width="144" height="36" rx="7" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.09)" strokeWidth="1" />
+            <circle cx="18" cy="188" r="4" fill="rgba(172,172,209,0.35)" />
+            <text x="28" y="184" fontFamily="var(--font-mono)" fontSize="8.5" fill="var(--navy-400)" letterSpacing="1">STAKEHOLDERS</text>
+            <text x="28" y="196" fontFamily="var(--font-mono)" fontSize="9.5" fill="var(--navy-200)" fontWeight="700" letterSpacing="0.5">6 mapped</text>
+
+            {/* ── STRATEGY center node ── */}
+            <rect x="314" y="78"  width="112" height="60" rx="12" fill="none" stroke="rgba(120,214,75,0.12)" strokeWidth="1" />
+            <rect x="318" y="82"  width="104" height="52" rx="9"  fill="rgba(120,214,75,0.1)" stroke="rgba(120,214,75,0.75)" strokeWidth="1.5" />
+            <circle cx="333" cy="108" r="5" fill="rgba(120,214,75,0.85)" className="phase-map__pulse-dot" />
+            <text x="345" y="105" fontFamily="var(--font-mono)" fontSize="9"  fill="var(--green-400)" fontWeight="700" letterSpacing="2">STRATEGY</text>
+            <text x="345" y="119" fontFamily="var(--font-mono)" fontSize="8"  fill="rgba(120,214,75,0.6)"  letterSpacing="1">SYNTHESIS</text>
+
+            {/* ── Output nodes ── */}
+            <rect x="508" y="24"  width="128" height="48" rx="7" fill="rgba(106,214,161,0.06)" stroke="rgba(106,214,161,0.28)" strokeWidth="1" />
+            <text x="522" y="42"  fontFamily="var(--font-mono)" fontSize="8.5" fill="var(--navy-400)"  letterSpacing="1">ARCHITECTURE</text>
+            <text x="522" y="54"  fontFamily="var(--font-mono)" fontSize="9.5" fill="var(--teal-400)"  fontWeight="700" letterSpacing="0.5">ADR-001 draft</text>
+            <text x="522" y="64"  fontFamily="var(--font-mono)" fontSize="7.5" fill="rgba(106,214,161,0.5)">→ in review</text>
+
+            <rect x="508" y="88"  width="128" height="48" rx="7" fill="rgba(106,214,161,0.06)" stroke="rgba(106,214,161,0.28)" strokeWidth="1" />
+            <text x="522" y="106" fontFamily="var(--font-mono)" fontSize="8.5" fill="var(--navy-400)"  letterSpacing="1">ROADMAP</text>
+            <text x="522" y="118" fontFamily="var(--font-mono)" fontSize="9.5" fill="var(--teal-400)"  fontWeight="700" letterSpacing="0.5">6-month plan</text>
+            <text x="522" y="128" fontFamily="var(--font-mono)" fontSize="7.5" fill="rgba(106,214,161,0.5)">→ pending sign-off</text>
+
+            <rect x="508" y="152" width="128" height="48" rx="7" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" strokeWidth="1" strokeDasharray="5 4" />
+            <text x="522" y="170" fontFamily="var(--font-mono)" fontSize="8.5" fill="var(--navy-400)"  letterSpacing="1">RISK REGISTER</text>
+            <text x="522" y="182" fontFamily="var(--font-mono)" fontSize="9.5" fill="rgba(172,172,209,0.55)" fontWeight="700" letterSpacing="0.5">8 mitigations</text>
+            <text x="522" y="192" fontFamily="var(--font-mono)" fontSize="7.5" fill="rgba(172,172,209,0.3)">→ not started</text>
+          </svg>
         </div>
 
-        <div className="phase-map__footer">Architecture document produced</div>
+        <div className="phase-map__footer">
+          Architecture document &amp; delivery roadmap produced
+        </div>
       </div>
     </div>
   )

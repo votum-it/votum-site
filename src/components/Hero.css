@@ -80,16 +80,6 @@
   margin-bottom: 64px;
 }
 
-.hero__trust {
-  display: flex; align-items: center; gap: 20px;
-  justify-content: center; flex-wrap: wrap;
-  font-size: 16px; color: var(--navy-100);
-}
-.hero__trust-dot {
-  width: 3px; height: 3px; border-radius: 50%;
-  background: var(--navy-200);
-}
-
 /* Scroll indicator */
 .hero__scroll {
   position: absolute; bottom: 36px;
