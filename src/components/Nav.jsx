@@ -72,6 +72,7 @@ export default function Nav({ onContact }) {
   const goToSection = (hash) => {
     setMenuOpen(false)
     if (isHome) {
+      window.history.replaceState(null, '', `/#${hash}`)
       document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth' })
     } else {
       navigate(`/#${hash}`)
@@ -85,6 +86,7 @@ export default function Nav({ onContact }) {
     setMenuOpen(false)
     setActiveSection('')
     if (isHome) {
+      window.history.replaceState(null, '', '/')
       window.scrollTo({ top: 0, behavior: 'smooth' })
     } else {
       navigate('/')
