@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useLanguage } from '../context/useLanguage'
 import './Footer.css'
 
@@ -67,7 +68,9 @@ export default function Footer() {
               <ul className="footer__links">
                 {col.links.map((link) => (
                   <li key={link.label}>
-                    <a href={link.href}>{link.label}</a>
+                    {link.href.startsWith('/') && !link.href.endsWith('.html')
+                      ? <Link to={link.href}>{link.label}</Link>
+                      : <a href={link.href}>{link.label}</a>}
                   </li>
                 ))}
               </ul>

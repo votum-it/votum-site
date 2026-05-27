@@ -58,7 +58,16 @@ export default function Services() {
           {services.map((svc, i) => (
             <div
               key={i}
-              className={`service-card service-card--${svc.variant} reveal ${DELAY[i]}`}
+              className={`service-card service-card--${svc.variant} service-card--clickable reveal ${DELAY[i]}`}
+              role="button"
+              tabIndex={0}
+              onClick={() => setSelectedService(svc)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault()
+                  setSelectedService(svc)
+                }
+              }}
             >
               <div className="service-card__heading">
                 <div className="service-card__icon">{svc.icon}</div>
@@ -70,9 +79,9 @@ export default function Services() {
                   <span key={tag.label} className={`tag tag--${tag.variant}`}>{tag.label}</span>
                 ))}
               </div>
-              <button type="button" className="service-card__link" onClick={() => setSelectedService(svc)}>
+              <span className="service-card__link" aria-hidden="true">
                 {t.learnMore}
-              </button>
+              </span>
             </div>
           ))}
         </div>

@@ -13,7 +13,7 @@ export function LanguageProvider({ children }) {
     localStorage.setItem('votum-lang', newLang)
   }
 
-  const locale = translations[lang]
+  const locale = { ...translations.en, ...translations[lang] }
 
   return (
     <LanguageContext.Provider value={{ lang, setLang, locale }}>

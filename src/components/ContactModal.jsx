@@ -87,7 +87,7 @@ export default function ContactModal({ open, onClose }) {
             <h2 className="contact-modal__title">{t.title}</h2>
             <p className="contact-modal__sub">{t.sub}</p>
 
-            <form ref={formRef} onSubmit={handleSubmit} noValidate>
+            <form ref={formRef} onSubmit={handleSubmit} noValidate className="contact-form">
               <input type="hidden" name="_subject" value="New contact from votum.com" />
               <input
                 type="text"

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { useLanguage } from '../context/useLanguage'
 import LangSwitcher from './LangSwitcher'
 import './Nav.css'
@@ -8,6 +9,9 @@ const SECTION_IDS = ['services', 'how', 'work', 'contact']
 export default function Nav({ onContact }) {
   const { lang, setLang, locale } = useLanguage()
   const t = locale.nav
+  const location = useLocation()
+  const navigate = useNavigate()
+  const isHome   = location.pathname === '/'
   const [scrolled,      setScrolled]      = useState(false)
   const [menuOpen,      setMenuOpen]      = useState(false)
   const [activeSection, setActiveSection] = useState('')
@@ -33,6 +37,8 @@ export default function Nav({ onContact }) {
   }, [menuOpen])
 
   useEffect(() => {
+    if (!isHome) { setActiveSection(''); return }
+
     const els = SECTION_IDS
       .map((id) => document.getElementById(id))
       .filter(Boolean)
@@ -55,18 +61,34 @@ export default function Nav({ onContact }) {
 
     els.forEach((el) => observer.observe(el))
     return () => observer.disconnect()
-  }, [])
+  }, [isHome])
 
-  const NAV_LINKS = [
-    { label: t.services,  href: '#services', id: 'services' },
-    { label: t.howWeWork, href: '#how',      id: 'how'      },
-    { label: t.work,      href: '#work',     id: 'work'     },
+  const SECTION_LINKS = [
+    { label: t.services,  hash: 'services', id: 'services' },
+    { label: t.howWeWork, hash: 'how',      id: 'how'      },
+    { label: t.work,      hash: 'work',     id: 'work'     },
   ]
 
+  const goToSection = (hash) => {
+    setMenuOpen(false)
+    if (isHome) {
+      document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth' })
+    } else {
+      navigate(`/#${hash}`)
+      setTimeout(() => {
+        document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth' })
+      }, 60)
+    }
+  }
+
   const handleLogoClick = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
     setMenuOpen(false)
     setActiveSection('')
+    if (isHome) {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    } else {
+      navigate('/')
+    }
   }
 
   return (
@@ -82,17 +104,34 @@ export default function Nav({ onContact }) {
         </button>
 
         <ul className="nav__links">
-          {NAV_LINKS.map(({ label, href, id }) => (
-            <li key={href}>
+          {SECTION_LINKS.map(({ label, hash, id }) => (
+            <li key={hash}>
               <a
-                href={href}
-                className={activeSection === id ? 'nav__link--active' : ''}
-                aria-current={activeSection === id ? 'true' : undefined}
+                href={`/#${hash}`}
+                onClick={(e) => { e.preventDefault(); goToSection(hash) }}
+                className={isHome && activeSection === id ? 'nav__link--active' : ''}
+                aria-current={isHome && activeSection === id ? 'true' : undefined}
               >
                 {label}
               </a>
             </li>
           ))}
+          <li>
+            <NavLink
+              to="/about"
+              className={({ isActive }) => (isActive ? 'nav__link--active' : '')}
+            >
+              {t.about}
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/blog"
+              className={({ isActive }) => (isActive ? 'nav__link--active' : '')}
+            >
+              {t.blog}
+            </NavLink>
+          </li>
         </ul>
 
         <LangSwitcher lang={lang} setLang={setLang} />
@@ -120,16 +159,18 @@ export default function Nav({ onContact }) {
 
       {menuOpen && (
         <div className="nav__mobile-menu">
-          {NAV_LINKS.map(({ label, href, id }) => (
+          {SECTION_LINKS.map(({ label, hash, id }) => (
             <a
-              key={href}
-              href={href}
-              className={activeSection === id ? 'nav__link--active' : ''}
-              onClick={() => setMenuOpen(false)}
+              key={hash}
+              href={`/#${hash}`}
+              onClick={(e) => { e.preventDefault(); goToSection(hash) }}
+              className={isHome && activeSection === id ? 'nav__link--active' : ''}
             >
               {label}
             </a>
           ))}
+          <Link to="/about" onClick={() => setMenuOpen(false)}>{t.about}</Link>
+          <Link to="/blog"  onClick={() => setMenuOpen(false)}>{t.blog}</Link>
           <button
             type="button"
             className="btn btn-primary nav__mobile-cta"

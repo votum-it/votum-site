@@ -7,6 +7,8 @@ export const translations = {
       howWeWork: 'How we work',
       work:      'Our work',
       contact:   'Contact',
+      about:     'About',
+      blog:      'Blog',
       cta:       'Get in touch',
     },
 
@@ -234,9 +236,9 @@ export const translations = {
     },
 
     contact: {
-      eyebrow:  'Start a conversation',
-      title:    'Tell us about your project.',
-      sub:      "We'll respond within 24 hours with a clear next step — not a sales pitch.",
+      eyebrow:  "You're one message away",
+      title:    'What are you working on?',
+      sub:      'Share a rough outline — a paragraph is enough. One of our senior engineers will read it personally and come back with a clear next step within 24 hours.',
       note:     'No commitment required.',
       send:     'Send message →',
       fields: {
@@ -263,16 +265,154 @@ export const translations = {
       },
     },
 
+    about: {
+      hero: {
+        eyebrow: 'About Votum',
+        titleLines: ['We build', 'engineering'],
+        titleTail: 'that',
+        titleAccent: 'lasts.',
+        lead: 'Votum is a senior engineering consultancy. We embed with your team, take ownership of outcomes, and build the technical foundations that let your product scale — without the overhead of a traditional agency.',
+        foundedYear: '2006',
+        foundedText: "Founded with the belief that great engineering is about ownership, not output. Eighteen years and 45+ engagements later, that hasn't changed.",
+      },
+      stats: [
+        { num: '45+', label: 'Projects delivered',   color: 'green' },
+        { num: '18+', label: 'Years of experience',  color: 'teal'  },
+        { num: '80%', label: 'Client retention',     color: 'green' },
+        { num: '20+', label: 'Senior engineers',     color: 'teal'  },
+      ],
+      mission: {
+        eyebrow: 'Our mission',
+        quote: 'Engineering organizations that',
+        quoteAccent: 'outlast the engagement.',
+        paragraphs: [
+          'Most agencies optimize for delivery: ship the feature, invoice the hours, move on. We optimize for the moment you no longer need us — when your team is confident, your systems are stable, and the architecture we built together is something you can grow on for years.',
+          "That means we embed deeply. We sit in your standups, write your documentation, and have the conversations that don't fit in a Jira ticket. It's slower in the short term and dramatically more valuable in the long term.",
+          'Votum was built by engineers who had spent years watching the same patterns fail — disconnected strategy, short-term execution, and handoffs that left teams worse off than when the engagement started. We set out to build the alternative.',
+        ],
+      },
+      principles: {
+        eyebrow: 'How we work',
+        title: "Six things we won't compromise on.",
+        cards: [
+          { num: '01', color: 'green', title: 'Senior engineers only',     body: "We don't staff with juniors and supervise from a distance. Every engineer working on your product has years of production experience. You pay for expertise, you get expertise." },
+          { num: '02', color: 'teal',  title: 'Ownership, not output',     body: "We measure success by outcomes, not tickets closed. If a feature shipped but the system is harder to maintain, we didn't succeed. We own the full lifecycle of what we build." },
+          { num: '03', color: 'green', title: 'No architecture astronauts', body: "We recommend the simplest solution that solves the real problem. We won't introduce complexity to look sophisticated or to extend the engagement. If a boring solution is the right one, we'll say so." },
+          { num: '04', color: 'teal',  title: 'Fixed scope before build',  body: "We won't start building until we understand the problem. Every engagement starts with a discovery phase — even a short one. Scope agreed on paper beats scope discovered in code." },
+          { num: '05', color: 'green', title: 'Transparent progress',      body: "You see what we're doing every week. No black-box development cycles. Live demos every sprint, open backlogs, and honest status updates — including the hard ones." },
+          { num: '06', color: 'teal',  title: 'We leave teams stronger',   body: 'The goal of every engagement is to make ourselves unnecessary. We write the documentation, run the knowledge transfers, and design systems your team can operate confidently without us.' },
+        ],
+      },
+      diff: {
+        eyebrow: 'Why Votum',
+        title: 'Not a typical agency.',
+        lead: 'The model most clients have experienced before — and what we do differently.',
+        headers: ['Typical agency', 'Votum'],
+        rows: [
+          { label: 'Team composition',  left: 'Mix of seniors and juniors, often rotated between projects',                      right: 'Senior engineers only. The person in your standup is the person writing your code.' },
+          { label: 'Engagement model',  left: 'Time-and-materials or fixed-price deliverables, optimized for hours billed',      right: 'Outcome-based. We define success criteria before we start and hold ourselves to them.' },
+          { label: 'Handoff',           left: 'Code delivered, documentation minimal, team left to figure out the rest',         right: 'Full documentation, knowledge transfer sessions, and optional long-term support retainer.' },
+          { label: 'Strategy',          left: 'Separate from execution — consultants advise, different team builds',             right: 'The engineers who advise are the engineers who build. No strategy-execution gap.' },
+        ],
+      },
+      team: {
+        eyebrow: 'The team',
+        title: "People who've done this before.",
+        note: "Every person at Votum has spent years in production engineering — not in consulting about it. We don't hire people to grow them. We hire people who are already excellent.",
+        members: [
+          { initials: 'IM', name: 'Ivan Mitev',      role: 'Founder & CTO',         bio: '18+ years in enterprise engineering. Led platform teams at scale across automotive, financial services, and insurance sectors.', tags: ['Architecture', 'Strategy', 'Cloud'] },
+          { initials: 'SN', name: 'Senior Engineer', role: 'DevOps & Platform Lead', bio: 'Kubernetes, CI/CD, and cloud-native infrastructure. Designed and operated platforms supporting 1,000+ concurrent users.',     tags: ['K8s', 'DevOps', 'AWS'] },
+          { initials: 'TP', name: 'Senior Engineer', role: 'Quality Engineering Lead', bio: 'Test automation strategy and implementation across full engineering lifecycles. 95%+ coverage across every project delivered.', tags: ['Test Automation', 'QA Strategy', 'Java'] },
+          { initials: '+',  name: '20+ engineers',   role: 'On demand',              bio: 'A network of senior engineers available for specific engagements. Every one vetted personally — no recruitment pool, no juniors.', tags: ['Full Stack', 'Mobile', 'Data'] },
+        ],
+        cta: {
+          textBefore: "We're growing carefully.",
+          textAfter: " If you're a senior engineer who wants to do high-quality work with clients who care about it, we'd like to hear from you.",
+          button: 'View open roles →',
+        },
+      },
+    },
+
+    blog: {
+      hero: {
+        eyebrow: 'Engineering insights',
+        titleLines: ['From the', 'engineers', 'doing it.'],
+        subStrong: 'Technical writing from the Votum team.',
+        sub: ' Architecture decisions, delivery patterns, and hard-won lessons from production engineering across 45+ engagements.',
+      },
+      filters: ['All', 'Architecture', 'DevOps', 'Quality Engineering', 'Delivery', 'Case Studies'],
+      featured: {
+        tags: [
+          { label: 'Case Study',   variant: 'green' },
+          { label: 'Architecture', variant: 'teal'  },
+        ],
+        date: 'April 2026',
+        title: 'Migrating 400GB of Insurance Data from OpenText SaaS — Without Losing a Single Record',
+        excerpt: "A leading European insurance group needed to exit an expensive SaaS vendor contract without disrupting 12 years of archived policyholder data. Here's how we designed a migration that preserved 100% integrity, maintained audit compliance, and eliminated vendor lock-in permanently.",
+        author: { initials: 'IM', name: 'Ivan Mitev', role: 'Founder & CTO' },
+        cta: 'Read article →',
+      },
+      grid: {
+        heading: 'Recent articles',
+        articles: [
+          {
+            icon: 'K8s', tagLabel: 'DevOps', tagVariant: 'teal',
+            date: 'March 2026', readTime: '8 min read',
+            title: 'Why we stopped using Helm for everything — and what we use instead',
+            excerpt: "Helm is a great tool when you need it. But three engagements in a row taught us that it's also the fastest way to create configuration sprawl that nobody can untangle 18 months later.",
+          },
+          {
+            icon: 'QE', tagLabel: 'Quality Engineering', tagVariant: 'green',
+            date: 'February 2026', readTime: '11 min read',
+            title: "95% test coverage is a bad goal. Here's what to measure instead.",
+            excerpt: "Coverage metrics are comfortable because they're easy to measure. They're also routinely gamed, misunderstood, and used to justify test suites that provide almost no protection against the failures that actually happen in production.",
+          },
+          {
+            icon: 'ADR', tagLabel: 'Architecture', tagVariant: 'teal',
+            date: 'January 2026', readTime: '6 min read',
+            title: 'Architecture Decision Records: the one document every engineering team should write but almost none do',
+            excerpt: 'Six months into an engagement, the question that kills velocity is "why did we build it this way?" ADRs are the cheapest insurance policy in software engineering. Here\'s our template and how we introduce them into teams that have never used them.',
+          },
+          {
+            icon: 'SLA', tagLabel: 'Delivery', tagVariant: 'green',
+            date: 'December 2025', readTime: '9 min read',
+            title: 'What a 99.98% uptime SLA actually costs — and how to design for it without over-engineering',
+            excerpt: "The math around availability SLAs is often treated as a business concern rather than an engineering one. It shouldn't be. The architecture decisions that determine whether you hit 99.9% or 99.99% are made months before the SLA is signed.",
+          },
+          {
+            icon: 'CI', tagLabel: 'DevOps', tagVariant: 'teal',
+            date: 'November 2025', readTime: '7 min read',
+            title: 'The CI pipeline that builds in 4 minutes: what we changed and why most pipelines take 20',
+            excerpt: "Slow pipelines kill developer flow. We've optimized CI for three different technology stacks in the last year. The problems are almost always the same, and the fixes are less dramatic than most people expect.",
+          },
+          {
+            icon: '∅', tagLabel: 'Delivery', tagVariant: 'green',
+            date: 'October 2025', readTime: '5 min read',
+            title: 'The discovery phase clients want to skip — and why skipping it doubles the engagement cost',
+            excerpt: "Every client who's ever pushed to skip discovery has regretted it. Not because we insist on process for its own sake, but because the questions that feel academic in week one become architectural constraints in week eight.",
+          },
+        ],
+      },
+      newsletter: {
+        eyebrow: 'Stay sharp',
+        title: 'Engineering insights, monthly.',
+        sub: 'One email per month. Architecture decisions, delivery patterns, and lessons from production. No marketing, no product announcements.',
+        placeholder: 'you@company.com',
+        button: 'Subscribe →',
+        note: '~800 engineers subscribed. Unsubscribe any time.',
+      },
+    },
+
     footer: {
       tagline:   'Engineered for impact.\nFrom vision to operations, we own your engineering excellence.',
       cols: [
         {
           title: 'Company',
           links: [
-            { label: 'About',    href: '#about'   },
-            { label: 'Our work', href: '#cases'   },
-            { label: 'Blog',     href: '#blog'    },
-            { label: 'Careers',  href: '#careers' },
+            { label: 'About',    href: '/about'   },
+            { label: 'Our work', href: '/#work'   },
+            { label: 'Blog',     href: '/blog'    },
+            { label: 'Careers',  href: '/about#team' },
           ],
         },
         {
@@ -297,6 +437,8 @@ export const translations = {
       howWeWork: 'Unser Vorgehen',
       work:      'Referenzen',
       contact:   'Kontakt',
+      about:     'About',
+      blog:      'Blog',
       cta:       'Kontakt aufnehmen',
     },
 
@@ -524,9 +666,9 @@ export const translations = {
     },
 
     contact: {
-      eyebrow:  'Gespräch beginnen',
-      title:    'Erzählen Sie uns von Ihrem Projekt.',
-      sub:      'Wir melden uns innerhalb von 24 Stunden mit einem klaren nächsten Schritt — ohne Sales-Pitch.',
+      eyebrow:  'Eine Nachricht genügt',
+      title:    'Woran arbeiten Sie?',
+      sub:      'Ein grober Überblick reicht — ein Absatz ist genug. Einer unserer Senior Engineers liest Ihre Nachricht persönlich und meldet sich innerhalb von 24 Stunden mit einem klaren nächsten Schritt.',
       note:     'Keine Verpflichtung erforderlich.',
       send:     'Nachricht senden →',
       fields: {
@@ -559,10 +701,10 @@ export const translations = {
         {
           title: 'Unternehmen',
           links: [
-            { label: 'Über uns',      href: '#about'   },
-            { label: 'Unsere Arbeit', href: '#cases'   },
-            { label: 'Blog',          href: '#blog'    },
-            { label: 'Karriere',      href: '#careers' },
+            { label: 'Über uns',      href: '/about'   },
+            { label: 'Unsere Arbeit', href: '/#work'   },
+            { label: 'Blog',          href: '/blog'    },
+            { label: 'Karriere',      href: '/about#team' },
           ],
         },
         {
@@ -587,6 +729,8 @@ export const translations = {
       howWeWork: 'Как работим',
       work:      'Нашата работа',
       contact:   'Контакт',
+      about:     'About',
+      blog:      'Blog',
       cta:       'Свържете се',
     },
 
@@ -814,9 +958,9 @@ export const translations = {
     },
 
     contact: {
-      eyebrow:  'Започнете разговор',
-      title:    'Разкажете ни за вашия проект.',
-      sub:      'Ще отговорим в рамките на 24 часа с ясна следваща стъпка — без търговска презентация.',
+      eyebrow:  'Едно съобщение е достатъчно',
+      title:    'По какво работите?',
+      sub:      'Споделете груб преглед — един абзац е достатъчен. Един от нашите старши инженери ще го прочете лично и ще се върне с ясна следваща стъпка в рамките на 24 часа.',
       note:     'Не е необходим ангажимент.',
       send:     'Изпратете съобщение →',
       fields: {
@@ -849,10 +993,10 @@ export const translations = {
         {
           title: 'Компания',
           links: [
-            { label: 'За нас',         href: '#about'   },
-            { label: 'Нашата работа',  href: '#cases'   },
-            { label: 'Блог',           href: '#blog'    },
-            { label: 'Кариери',        href: '#careers' },
+            { label: 'За нас',         href: '/about'   },
+            { label: 'Нашата работа',  href: '/#work'   },
+            { label: 'Блог',           href: '/blog'    },
+            { label: 'Кариери',        href: '/about#team' },
           ],
         },
         {
