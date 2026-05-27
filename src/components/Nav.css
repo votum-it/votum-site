@@ -227,5 +227,13 @@
 
 @media (max-width: 768px) {
   .nav__links { display: none; }
-  .nav__hamburger { display: flex; }
+  .nav__hamburger { display: flex; margin-left: 8px; }
+  .lang-switcher { margin-left: auto; }
+  .lang-switcher__trigger {
+    padding: 9px 12px;
+    font-size: 13px;
+    gap: 7px;
+  }
+  .lang-switcher__globe   { width: 15px; height: 15px; }
+  .lang-switcher__chevron { width: 11px; height: 11px; }
 }

@@ -385,3 +385,16 @@
   .article-grid { grid-template-columns: 1fr; }
   .blog-newsletter__form { flex-direction: column; }
 }
+
+@media (max-width: 640px) {
+  .blog-hero        { padding: 48px var(--container-pad) 36px; }
+  .blog-featured    { padding: 36px var(--container-pad); }
+  .blog-grid        { padding: 0 var(--container-pad) 56px; }
+  .blog-newsletter  { padding: 44px var(--container-pad) 64px; }
+  .featured-card__body { padding: 28px 24px; }
+  .featured-card__code { padding: 22px; font-size: 11px; }
+  .article-card__body  { padding: 18px 18px 20px; }
+  /* Allow filter chips to wrap nicely and let horizontal-scroll fallback if needed */
+  .blog-filter__inner  { gap: 6px; }
+  .filter-btn          { font-size: 12px; padding: 5px 12px; }
+}
