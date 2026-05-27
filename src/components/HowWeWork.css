@@ -84,6 +84,15 @@
   height: 100%;
 }
 
+.feature-strip__visual:has(.phase-heartbeat) {
+  aspect-ratio: unset;
+  align-items: flex-start;
+}
+
+.feature-strip__visual:has(.phase-heartbeat) > * {
+  height: auto;
+}
+
 .feature-strip__eyebrow {
   display: block;
   margin-bottom: 16px;
